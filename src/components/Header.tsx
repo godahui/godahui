@@ -1,0 +1,264 @@
+import styled from "styled-components";
+
+export const Header = () => {
+  return (
+    <>
+      <NavWrap>
+        <TopNav>
+          <h1 className="logo">
+            <a>
+              <img src="assets/img/logo.png" />
+            </a>
+          </h1>
+          <div className="right-area">
+            <input
+              type="text"
+              style={{ backgroundImage: 'url("assets/icon/search.svg")' }}
+            />
+            <button>
+              <p>로그인</p>
+            </button>
+            <button>
+              <p>회원가입</p>
+            </button>
+          </div>
+        </TopNav>
+        <BottomNav>
+          <ul className="gnb left-gnb">
+            <li>
+              <a>눈높이소개</a>
+              <ul className="gnb-depth _1">
+                <li>
+                  <a>브랜드스토리</a>
+                </li>
+                <li>
+                  <a>눈높이학습서비스</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>제품소개</a>
+              <ul className="gnb-depth _2">
+                <li>
+                  <a>제품소개</a>
+                </li>
+                <li>
+                  <a>제품 한눈에보기</a>
+                </li>
+                <li>
+                  <a>제품카달로그</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>커뮤니티</a>
+              <ul className="gnb-depth _3">
+                <li>
+                  <a>눈높이소식</a>
+                </li>
+                <li>
+                  <a>이벤트</a>
+                </li>
+                <li>
+                  <a>교육정보</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>회원서비스</a>
+              <ul className="gnb-depth _4">
+                <li>
+                  <a>눈높이siBT 학력진단</a>
+                </li>
+                <li>
+                  <a>눈높이365</a>
+                </li>
+                <li>
+                  <a>눈높이학습관</a>
+                </li>
+                <li>
+                  <a>눈높이성장판</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>눈높이올림피아드</a>
+              <ul className="gnb-depth _5">
+                <li>
+                  <a>대회소개</a>
+                </li>
+                <li>
+                  <a>기출문제</a>
+                </li>
+                <li>
+                  <a>결과조회</a>
+                </li>
+                <li>
+                  <a>FAQ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul className="gnb right-gnb">
+            <li>
+              <a>가까운 눈높이찾기</a>
+            </li>
+            <li>
+              <a>온라인 상담신청</a>
+            </li>
+            <li>
+              <a>눈높이학습서비스</a>
+            </li>
+          </ul>
+        </BottomNav>
+      </NavWrap>
+    </>
+  );
+};
+
+const NavWrap = styled.nav`
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+`;
+
+const TopNav = styled.div`
+  flex: 0 0 80px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  .logo {
+    padding: 0 20px;
+  }
+  .right-area {
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    padding-right: 10px;
+    input {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center center;
+      outline: none;
+      cursor: pointer;
+      font-size: 0;
+      transition: width 0.4s ease-in-out;
+      &:hover,
+      &:active,
+      &:focus {
+        width: 240px;
+        background-color: rgba(255, 255, 255, 0.9);
+        background-position: 20px center;
+        padding-left: 50px;
+        padding-right: 20px;
+        box-shadow: 0px 2px 20px rgba(130, 96, 231, 0.25);
+        font-size: 16px;
+      }
+    }
+    button {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      padding: 0 10px;
+      margin-left: 2px;
+      cursor: pointer;
+      p {
+        font-size: 14px;
+        color: #333;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+`;
+const BottomNav = styled.div`
+  flex: 0 0 60px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  .gnb {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    &.left-gnb {
+      flex: 0 0 auto;
+      justify-content: flex-start;
+    }
+    &.right-gnb {
+      flex: 1 1 auto;
+      justify-content: flex-end;
+    }
+    > li {
+      flex: 0 0 auto;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      > a {
+        flex: 0 0 auto;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        height: 100%;
+        padding: 0 20px;
+      }
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        transform: translateY(-4px);
+        > a {
+          color: #fd0000;
+          & + ul {
+            height: auto;
+            padding: 10px 0;
+            transition: top 0.4s;
+            top: 60px;
+          }
+        }
+      }
+      .gnb-depth {
+        position: absolute;
+        top: 70px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 180px;
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0px 2px 20px rgba(130, 96, 231, 0.25);
+        border-radius: 16px;
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        li {
+          flex: 0 0 40px;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          width: 100%;
+          a {
+            width: 100%;
+            padding: 12px 0;
+            color: #888;
+          }
+          &:hover {
+            a {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+`;
