@@ -158,7 +158,7 @@ const TopNav = styled.div`
         padding-left: 50px;
         padding-right: 20px;
         box-shadow: 0px 2px 20px rgba(130, 96, 231, 0.25);
-        font-size: 16px;
+        font-size: ${(props) => props.theme.fontSize.fontSizeRegular};
       }
     }
     button {
@@ -169,8 +169,8 @@ const TopNav = styled.div`
       margin-left: 2px;
       cursor: pointer;
       p {
-        font-size: 14px;
-        color: #333;
+        font-size: ${(props) => props.theme.fontSize.fontSizeSmall};
+        color: ${(props) => props.theme.fontColor.fontColorBlack};
       }
       &:hover {
         text-decoration: underline;
@@ -250,7 +250,7 @@ const BottomNav = styled.div`
           a {
             width: 100%;
             padding: 12px 0;
-            color: #888;
+            color: ${(props) => props.theme.fontColor.fontColorGray};
           }
           &:hover {
             a {

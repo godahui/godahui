@@ -94,14 +94,14 @@ const SliderContWrap = styled.section`
         display: block;
         width: 24px;
         height: 24px;
-        border-left: 1px solid #252a34;
-        border-bottom: 1px solid #252a34;
+        border-left: 1px solid ${(props) => props.theme.color.black};
+        border-bottom: 1px solid ${(props) => props.theme.color.black};
         transform: rotate(45deg);
         z-index: 1;
       }
       &:hover::after {
-        border-left: 1px solid #525252;
-        border-bottom: 1px solid #525252;
+        border-left: 1px solid ${(props) => props.theme.color.gray2};
+        border-bottom: 1px solid ${(props) => props.theme.color.gray2};
       }
     }
     .next {
@@ -127,11 +127,11 @@ const SliderContWrap = styled.section`
         font-size: 20px;
         margin: 0 2px;
         &.current-page {
-          font-size: 24px;
-          color: #252a34;
+          font-size: ${(props) => props.theme.fontSize.fontSizeLargeRegular};
+          color: ${(props) => props.theme.color.black};
         }
         &.all-page {
-          color: #888;
+          color: ${(props) => props.theme.fontColor.fontColorGray};
         }
       }
     }
@@ -156,15 +156,15 @@ const SliderContWrap = styled.section`
           padding-bottom: 120px;
           strong {
             display: inline-block;
-            font-size: 40px;
-            font-weight: 700;
+            font-size: ${(props) => props.theme.fontSize.fontSizeLarge};
+            font-size: ${(props) => props.theme.fontWeight.fontWeightBold};
             line-height: 48px;
             margin-bottom: 27px;
           }
           p {
             display: inline-block;
-            font-size: 20px;
-            font-weight: 24px;
+            font-size: ${(props) => props.theme.fontSize.fontSizeMideum};
+            font-size: ${(props) => props.theme.fontWeight.fontWeightRegular};
             line-height: 24px;
             margin-bottom: 27px;
           }

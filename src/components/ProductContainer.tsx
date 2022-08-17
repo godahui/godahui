@@ -141,11 +141,11 @@ const ProductContWrap = styled.section`
     flex-flow: column nowrap;
     h2 {
       flex: 0 0 65px;
-      font-size: 36px;
+      font-size: ${(props) => props.theme.fontSize.fontSizeTitle};
     }
     strong {
       flex: 0 0 35px;
-      font-size: 24px;
+      font-size: ${(props) => props.theme.fontSize.fontSizeMideum};
     }
   }
   .tab-wrap {
@@ -160,8 +160,8 @@ const ProductContWrap = styled.section`
       flex-flow: row nowrap;
       margin-bottom: 60px;
       > li {
-        flex: 0 0 80px;
-        width: 80px;
+        flex: 0 0 60px;
+        width: 60px;
         display: flex;
         flex-flow: row nowrap;
         position: relative;
@@ -176,8 +176,8 @@ const ProductContWrap = styled.section`
           &::before {
             content: "";
             display: block;
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             position: absolute;
             top: 0;
             left: 0;
@@ -188,23 +188,23 @@ const ProductContWrap = styled.section`
           &::after {
             content: "";
             display: block;
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #fbf4f4;
+            background-color: ${(props) => props.theme.color.gray};
             border-radius: 50%;
           }
           > p {
             flex: 0 0 auto;
             position: absolute;
             bottom: -25px;
-            font-size: 20px;
+            font-size: ${(props) => props.theme.fontSize.fontSizeRegular};
           }
         }
         &:hover a p {
-          color: #fd0000;
+          color: ${(props) => props.theme.color.red};
         }
         &:nth-child(1) {
           a::before {
@@ -267,10 +267,10 @@ const ProductContWrap = styled.section`
         margin: 0 5px;
         > a {
           padding: 5px 10px;
-          font-size: 16px;
+          font-size: ${(props) => props.theme.fontSize.fontSizeRegular};
         }
         &:hover a {
-          color: #fd0000;
+          color: ${(props) => props.theme.color.red};
         }
       }
     }
@@ -311,7 +311,7 @@ const ProductContWrap = styled.section`
         }
         p {
           flex: 0 0 auto;
-          font-size: 16px;
+          font-size: ${(props) => props.theme.fontSize.fontSizeRegular};
         }
       }
     }

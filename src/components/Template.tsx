@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../styles/styled";
 
 interface IProps {
   header?: React.ReactElement;
@@ -9,11 +11,13 @@ interface IProps {
 
 export const Template = ({ header, container, footer }: IProps) => {
   return (
-    <RootWrap>
-      <HeaderWrap>{header}</HeaderWrap>
-      <ContainerWrap>{container}</ContainerWrap>
-      {footer}
-    </RootWrap>
+    <ThemeProvider theme={theme}>
+      <RootWrap>
+        <HeaderWrap>{header}</HeaderWrap>
+        <ContainerWrap>{container}</ContainerWrap>
+        {footer}
+      </RootWrap>
+    </ThemeProvider>
   );
 };
 

@@ -89,11 +89,11 @@ const ServiceContWrap = styled.section`
     align-items: flex-start;
     h2 {
       flex: 0 0 65px;
-      font-size: 36px;
+      font-size: ${(props) => props.theme.fontSize.fontSizeTitle};
     }
     strong {
       flex: 0 0 auto;
-      font-size: 24px;
+      font-size: ${(props) => props.theme.fontSize.fontSizeMideum};
       line-height: 26px;
     }
   }
