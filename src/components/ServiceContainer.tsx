@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const ServiceContainer = () => {
   return (
     <ServiceContWrap style={{ backgroundImage: 'url("assets/img/bg2.png")' }}>
+      <div className="btn-wrap">
+        <button className="prev"></button>
+        <button className="next"></button>
+      </div>
       <div className="title-wrap">
         <h2>Service</h2>
         <strong>
@@ -79,6 +83,40 @@ const ServiceContWrap = styled.section`
   background-size: auto;
   background-position: top;
   background-repeat: no-repeat;
+  .btn-wrap {
+    width: 100%;
+    max-width: 1420px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    .prev,
+    .next {
+      width: 44px;
+      height: 44px;
+      &::after {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-left: 1px solid #252a34;
+        border-bottom: 1px solid #252a34;
+        transform: rotate(45deg);
+        z-index: 1;
+      }
+      &:hover::after {
+        border-left: 1px solid #525252;
+        border-bottom: 1px solid #525252;
+      }
+    }
+    .next {
+      transform: rotate(180deg);
+    }
+  }
   .title-wrap {
     flex: 0 0 auto;
     display: flex;
@@ -89,12 +127,12 @@ const ServiceContWrap = styled.section`
     align-items: flex-start;
     h2 {
       flex: 0 0 65px;
-      font-size: 36px;
+      font-size: ${(t) => t.theme.fontSize.title};
     }
     strong {
       flex: 0 0 auto;
-      font-size: 24px;
-      line-height: 26px;
+      font-size: ${(t) => t.theme.fontSize.largeRegular};
+      line-height: 28px;
     }
   }
   .slide-cont {
@@ -102,6 +140,7 @@ const ServiceContWrap = styled.section`
     flex-flow: column nowrap;
     width: 1200px;
     overflow: hidden;
+    padding: 50px 0;
     .slider-track {
       display: flex;
       flex-flow: row nowrap;

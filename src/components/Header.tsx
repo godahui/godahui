@@ -24,21 +24,21 @@ export const Header = () => {
           </div>
         </TopNav>
         <BottomNav>
-          <ul className="gnb left-gnb">
+          <Gnb className="left-gnb">
             <li>
               <a>눈높이소개</a>
-              <ul className="gnb-depth _1">
+              <GnbDepth className="_1">
                 <li>
                   <a>브랜드스토리</a>
                 </li>
                 <li>
                   <a>눈높이학습서비스</a>
                 </li>
-              </ul>
+              </GnbDepth>
             </li>
             <li>
               <a>제품소개</a>
-              <ul className="gnb-depth _2">
+              <GnbDepth className="_2">
                 <li>
                   <a>제품소개</a>
                 </li>
@@ -48,11 +48,11 @@ export const Header = () => {
                 <li>
                   <a>제품카달로그</a>
                 </li>
-              </ul>
+              </GnbDepth>
             </li>
             <li>
               <a>커뮤니티</a>
-              <ul className="gnb-depth _3">
+              <GnbDepth className="_3">
                 <li>
                   <a>눈높이소식</a>
                 </li>
@@ -62,11 +62,11 @@ export const Header = () => {
                 <li>
                   <a>교육정보</a>
                 </li>
-              </ul>
+              </GnbDepth>
             </li>
             <li>
               <a>회원서비스</a>
-              <ul className="gnb-depth _4">
+              <GnbDepth className="_4">
                 <li>
                   <a>눈높이siBT 학력진단</a>
                 </li>
@@ -79,11 +79,11 @@ export const Header = () => {
                 <li>
                   <a>눈높이성장판</a>
                 </li>
-              </ul>
+              </GnbDepth>
             </li>
             <li>
               <a>눈높이올림피아드</a>
-              <ul className="gnb-depth _5">
+              <GnbDepth className="_5">
                 <li>
                   <a>대회소개</a>
                 </li>
@@ -96,10 +96,10 @@ export const Header = () => {
                 <li>
                   <a>FAQ</a>
                 </li>
-              </ul>
+              </GnbDepth>
             </li>
-          </ul>
-          <ul className="gnb right-gnb">
+          </Gnb>
+          <Gnb className="right-gnb">
             <li>
               <a>가까운 눈높이찾기</a>
             </li>
@@ -109,7 +109,7 @@ export const Header = () => {
             <li>
               <a>눈높이학습서비스</a>
             </li>
-          </ul>
+          </Gnb>
         </BottomNav>
       </NavWrap>
     </>
@@ -157,8 +157,8 @@ const TopNav = styled.div`
         background-position: 20px center;
         padding-left: 50px;
         padding-right: 20px;
-        box-shadow: 0px 2px 20px rgba(130, 96, 231, 0.25);
-        font-size: 16px;
+        box-shadow: 0px 2px 20px ${(t) => t.theme.color.shadow};
+        font-size: ${(t) => t.theme.fontSize.regular};
       }
     }
     button {
@@ -169,7 +169,7 @@ const TopNav = styled.div`
       margin-left: 2px;
       cursor: pointer;
       p {
-        font-size: 14px;
+        font-size: ${(t) => t.theme.fontSize.small};
         color: #333;
       }
       &:hover {
@@ -185,79 +185,80 @@ const BottomNav = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  .gnb {
+`;
+
+const Gnb = styled.ul`
+  display: flex;
+  flex-flow: row nowrap;
+  height: 100%;
+  &.left-gnb {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+  &.right-gnb {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+  }
+  > li {
+    flex: 0 0 auto;
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+    position: relative;
     height: 100%;
-    &.left-gnb {
-      flex: 0 0 auto;
-      justify-content: flex-start;
-    }
-    &.right-gnb {
-      flex: 1 1 auto;
-      justify-content: flex-end;
-    }
-    > li {
+    > a {
       flex: 0 0 auto;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      position: relative;
       height: 100%;
+      padding: 0 20px;
+    }
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      transform: translateY(-4px);
       > a {
-        flex: 0 0 auto;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        height: 100%;
-        padding: 0 20px;
-      }
-      &:hover {
-        transition: all 0.2s ease-in-out;
-        transform: translateY(-4px);
-        > a {
-          color: #fd0000;
-          & + ul {
-            height: auto;
-            padding: 10px 0;
-            transition: top 0.4s;
-            top: 60px;
-          }
+        color: ${(t) => t.theme.color.red};
+        & + ul {
+          height: auto;
+          padding: 10px 0;
+          transition: top 0.4s;
+          top: 60px;
         }
       }
-      .gnb-depth {
-        position: absolute;
-        top: 70px;
-        right: 50%;
-        transform: translateX(50%);
-        width: 180px;
-        display: flex;
-        flex-flow: column nowrap;
-        background-color: rgba(255, 255, 255, 0.9);
-        box-shadow: 0px 2px 20px rgba(130, 96, 231, 0.25);
-        border-radius: 16px;
-        height: 0;
-        overflow: hidden;
-        padding: 0;
-        li {
-          flex: 0 0 40px;
-          display: flex;
-          flex-flow: row nowrap;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          width: 100%;
-          a {
-            width: 100%;
-            padding: 12px 0;
-            color: #888;
-          }
-          &:hover {
-            a {
-              text-decoration: underline;
-            }
-          }
-        }
+    }
+  }
+`;
+const GnbDepth = styled.ul`
+  position: absolute;
+  top: 70px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 180px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 2px 20px ${(t) => t.theme.color.shadow};
+  border-radius: 16px;
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  li {
+    flex: 0 0 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    a {
+      width: 100%;
+      padding: 12px 0;
+      color: ${(t) => t.theme.color.fontGray};
+    }
+    &:hover {
+      a {
+        text-decoration: underline;
       }
     }
   }
