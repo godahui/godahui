@@ -1,7 +1,7 @@
 const fontSize = {
   large: "40px",
   largeRegular: "24px",
-  mideum: "20px",
+  medium: "20px",
   regular: "16px",
   small: "14px",
   title: "36px",
@@ -32,4 +32,3 @@ const theme = {
 };
 
 export default theme;
-theme;

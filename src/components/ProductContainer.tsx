@@ -10,112 +10,112 @@ export const ProductContainer = () => {
       <TabWrap>
         <ul className="top-tab">
           <li>
-            <a href="#">
+            <a href="#none">
               <p>유아</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>초등</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>중등</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>고등</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#none">
               <p>성인</p>
             </a>
           </li>
         </ul>
         <ul className="bottom-tab">
           <li>
-            <a href="#">전체영역</a>
+            <a href="#none">전체영역</a>
           </li>
           <li>
-            <a href="#">언어영역</a>
+            <a href="#none">언어영역</a>
           </li>
           <li>
-            <a href="#">수리영역</a>
+            <a href="#none">수리영역</a>
           </li>
           <li>
-            <a href="#">외국어영역</a>
+            <a href="#none">외국어영역</a>
           </li>
           <li>
-            <a href="#">과학영역</a>
+            <a href="#none">과학영역</a>
           </li>
         </ul>
       </TabWrap>
       <ProductTrack>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book1.png" />
             <p>국어</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book2.png" />
             <p>수학</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book3.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book4.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book5.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book2.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book1.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book5.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book4.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book3.png" />
             <p>어쩌구</p>
           </a>
         </li>
         <li className="product-item">
-          <a href="#">
+          <a href="#none">
             <img src="assets/img/book/book1.png" />
             <p>어쩌구</p>
           </a>
@@ -149,6 +149,7 @@ const TitleWrap = styled.div`
   strong {
     flex: 0 0 35px;
     font-size: ${(t) => t.theme.fontSize.largeRegular};
+    font-weight: ${(t) => t.theme.fontWeight.regular};
   }
 `;
 
@@ -162,7 +163,7 @@ const TabWrap = styled.div`
     flex: 0 0 80px;
     display: flex;
     flex-flow: row nowrap;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
     > li {
       flex: 0 0 80px;
       width: 80px;
@@ -204,7 +205,7 @@ const TabWrap = styled.div`
           flex: 0 0 auto;
           position: absolute;
           bottom: -25px;
-          font-size: ${(t) => t.theme.fontSize.mideum};
+          font-size: ${(t) => t.theme.fontSize.medium};
         }
       }
       &:hover a p {
@@ -268,7 +269,7 @@ const TabWrap = styled.div`
     flex-flow: row nowrap;
     > li {
       flex: 0 0 auto;
-      margin: 0 5px;
+      margin: 0 10px;
       > a {
         padding: 5px 10px;
         font-size: ${(t) => t.theme.fontSize.regular};

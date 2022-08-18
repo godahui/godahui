@@ -124,7 +124,7 @@ const SliderContWrap = styled.section`
       right: 0;
       transform: translateY(-50%);
       p {
-        font-size: ${(t) => t.theme.fontSize.mideum};
+        font-size: ${(t) => t.theme.fontSize.medium};
         margin: 0 2px;
         &.current-page {
           font-size: 24px;
@@ -163,7 +163,7 @@ const SliderContWrap = styled.section`
           }
           p {
             display: inline-block;
-            font-size: ${(t) => t.theme.fontSize.mideum};
+            font-size: ${(t) => t.theme.fontSize.medium};
             font-weight: 24px;
             line-height: 24px;
             margin-bottom: 27px;

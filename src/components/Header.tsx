@@ -4,9 +4,9 @@ export const Header = () => {
   return (
     <>
       <NavWrap>
-        <TopNav>
+        <TopNav className="top-nav">
           <h1 className="logo">
-            <a>
+            <a href="/">
               <img src="assets/img/logo.png" />
             </a>
           </h1>
@@ -23,91 +23,91 @@ export const Header = () => {
             </button>
           </div>
         </TopNav>
-        <BottomNav>
+        <BottomNav className="bottom-nav">
           <Gnb className="left-gnb">
             <li>
-              <a>눈높이소개</a>
+              <a href="#none">눈높이소개</a>
               <GnbDepth className="_1">
                 <li>
-                  <a>브랜드스토리</a>
+                  <a href="#none">브랜드스토리</a>
                 </li>
                 <li>
-                  <a>눈높이학습서비스</a>
+                  <a href="#none">눈높이학습서비스</a>
                 </li>
               </GnbDepth>
             </li>
             <li>
-              <a>제품소개</a>
+              <a href="#none">제품소개</a>
               <GnbDepth className="_2">
                 <li>
-                  <a>제품소개</a>
+                  <a href="#none">제품소개</a>
                 </li>
                 <li>
-                  <a>제품 한눈에보기</a>
+                  <a href="#none">제품 한눈에보기</a>
                 </li>
                 <li>
-                  <a>제품카달로그</a>
+                  <a href="#none">제품카달로그</a>
                 </li>
               </GnbDepth>
             </li>
             <li>
-              <a>커뮤니티</a>
+              <a href="#none">커뮤니티</a>
               <GnbDepth className="_3">
                 <li>
-                  <a>눈높이소식</a>
+                  <a href="#none">눈높이소식</a>
                 </li>
                 <li>
-                  <a>이벤트</a>
+                  <a href="#none">이벤트</a>
                 </li>
                 <li>
-                  <a>교육정보</a>
+                  <a href="#none">교육정보</a>
                 </li>
               </GnbDepth>
             </li>
             <li>
-              <a>회원서비스</a>
+              <a href="#none">회원서비스</a>
               <GnbDepth className="_4">
                 <li>
-                  <a>눈높이siBT 학력진단</a>
+                  <a href="#none">눈높이siBT 학력진단</a>
                 </li>
                 <li>
-                  <a>눈높이365</a>
+                  <a href="#none">눈높이365</a>
                 </li>
                 <li>
-                  <a>눈높이학습관</a>
+                  <a href="#none">눈높이학습관</a>
                 </li>
                 <li>
-                  <a>눈높이성장판</a>
+                  <a href="#none">눈높이성장판</a>
                 </li>
               </GnbDepth>
             </li>
             <li>
-              <a>눈높이올림피아드</a>
+              <a href="#none">눈높이올림피아드</a>
               <GnbDepth className="_5">
                 <li>
-                  <a>대회소개</a>
+                  <a href="#none">대회소개</a>
                 </li>
                 <li>
-                  <a>기출문제</a>
+                  <a href="#none">기출문제</a>
                 </li>
                 <li>
-                  <a>결과조회</a>
+                  <a href="#none">결과조회</a>
                 </li>
                 <li>
-                  <a>FAQ</a>
+                  <a href="#none">FAQ</a>
                 </li>
               </GnbDepth>
             </li>
           </Gnb>
           <Gnb className="right-gnb">
             <li>
-              <a>가까운 눈높이찾기</a>
+              <a href="#none">가까운 눈높이찾기</a>
             </li>
             <li>
-              <a>온라인 상담신청</a>
+              <a href="#none">온라인 상담신청</a>
             </li>
             <li>
-              <a>눈높이학습서비스</a>
+              <a href="#none">눈높이학습서비스</a>
             </li>
           </Gnb>
         </BottomNav>
@@ -121,6 +121,7 @@ const NavWrap = styled.nav`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
+  max-width: 1320px;
 `;
 
 const TopNav = styled.div`
@@ -153,7 +154,7 @@ const TopNav = styled.div`
       &:active,
       &:focus {
         width: 240px;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgb(255, 255, 255);
         background-position: 20px center;
         padding-left: 50px;
         padding-right: 20px;
@@ -237,7 +238,7 @@ const GnbDepth = styled.ul`
   width: 180px;
   display: flex;
   flex-flow: column nowrap;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 20px ${(t) => t.theme.color.shadow};
   border-radius: 16px;
   height: 0;
