@@ -94,14 +94,14 @@ const SliderContWrap = styled.section`
         display: block;
         width: 24px;
         height: 24px;
-        border-left: 1px solid ${(props) => props.theme.color.black};
-        border-bottom: 1px solid ${(props) => props.theme.color.black};
+        border-left: 1px solid ${(t) => t.theme.color.black};
+        border-bottom: 1px solid ${(t) => t.theme.color.black};
         transform: rotate(45deg);
         z-index: 1;
       }
       &:hover::after {
-        border-left: 1px solid ${(props) => props.theme.color.gray2};
-        border-bottom: 1px solid ${(props) => props.theme.color.gray2};
+        border-left: 1px solid ${(t) => t.theme.color.blackGray};
+        border-bottom: 1px solid ${(t) => t.theme.color.blackGray};
       }
     }
     .next {
@@ -124,14 +124,14 @@ const SliderContWrap = styled.section`
       right: 0;
       transform: translateY(-50%);
       p {
-        font-size: 20px;
+        font-size: ${(t) => t.theme.fontSize.mideum};
         margin: 0 2px;
         &.current-page {
-          font-size: ${(props) => props.theme.fontSize.fontSizeLargeRegular};
-          color: ${(props) => props.theme.color.black};
+          font-size: 24px;
+          color: ${(t) => t.theme.color.black};
         }
         &.all-page {
-          color: ${(props) => props.theme.fontColor.fontColorGray};
+          color: ${(t) => t.theme.color.fontGray};
         }
       }
     }
@@ -156,15 +156,15 @@ const SliderContWrap = styled.section`
           padding-bottom: 120px;
           strong {
             display: inline-block;
-            font-size: ${(props) => props.theme.fontSize.fontSizeLarge};
-            font-size: ${(props) => props.theme.fontWeight.fontWeightBold};
+            font-size: ${(t) => t.theme.fontSize.large};
+            font-weight: ${(t) => t.theme.fontWeight.bold};
             line-height: 48px;
             margin-bottom: 27px;
           }
           p {
             display: inline-block;
-            font-size: ${(props) => props.theme.fontSize.fontSizeMideum};
-            font-size: ${(props) => props.theme.fontWeight.fontWeightRegular};
+            font-size: ${(t) => t.theme.fontSize.mideum};
+            font-weight: 24px;
             line-height: 24px;
             margin-bottom: 27px;
           }
