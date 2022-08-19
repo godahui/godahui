@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import banner from "../assets/img/banner.png";
 
 export const ServiceContainer = () => {
   return (
@@ -91,6 +92,11 @@ export const ServiceContainer = () => {
           </li>
         </ul>
       </SlideCont>
+      <BannerWrap>
+        <a>
+          <img src={banner} />
+        </a>
+      </BannerWrap>
     </ServiceContWrap>
   );
 };
@@ -99,11 +105,10 @@ const ServiceContWrap = styled.section`
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  height: 685px;
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding: 20px 0 50px;
+  padding: 20px 0 0;
   background-size: auto;
   background-position: top;
   background-repeat: no-repeat;
@@ -116,7 +121,7 @@ const BtnWrap = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   position: absolute;
-  top: 55%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1;
@@ -263,9 +268,21 @@ const SlideCont = styled.div`
           }
         }
         &:active {
-          transform: scale(0.99);
+          transform: scale(0.99) translateY(-15px);
         }
       }
+    }
+  }
+`;
+
+const BannerWrap = styled.div`
+  width: 100%;
+  padding: 50px 0;
+  background-color: #fff6f6;
+  a {
+    width: 100%;
+    img {
+      width: 100%;
     }
   }
 `;
