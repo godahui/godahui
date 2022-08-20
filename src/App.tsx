@@ -5,6 +5,8 @@ import { Header } from "./components/Header";
 import { SliderContainer } from "./components/SliderContainer";
 import { ProductContainer } from "./components/ProductContainer";
 import { ServiceContainer } from "./components/ServiceContainer";
+import { InfoContainer } from "./components/InfoContainer";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -16,9 +18,10 @@ function App() {
             <SliderContainer />
             <ProductContainer />
             <ServiceContainer />
+            <InfoContainer />
           </>
         }
-        footer={<></>}
+        footer={<Footer />}
       />
     </ThemeProvider>
   );

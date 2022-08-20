@@ -1,63 +1,68 @@
 import styled from "styled-components";
+import { useState, useEffect, useRef } from "react";
+import mainSlideItems from "../mock/main";
 
 export const SliderContainer = () => {
+  const [inx, setInx] = useState(0);
+  const slideTrack = useRef() as React.MutableRefObject<HTMLUListElement>;
+
+  const goNext = () => {
+    setInx(inx + 1);
+    if (inx === 2) {
+      setInx(0);
+      return;
+    }
+  };
+
+  const goPrev = () => {
+    setInx(inx - 1);
+    if (inx === 0) {
+      setInx(2);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    const slideTrackCount = slideTrack.current.children.length;
+    slideTrack.current.style.transition = "all 0.5s ease 0s";
+    slideTrack.current.style.width = slideTrackCount * 1320 + "px";
+    slideTrack.current.style.marginLeft = "-" + inx * 1280 + "px";
+  }, [inx]);
+
   return (
     <SliderContWrap style={{ backgroundImage: 'url("assets/img/bg1.png")' }}>
       <div className="btn-wrap">
-        <button className="prev"></button>
-        <button className="next"></button>
+        <button className="prev" onClick={goPrev} />
+        <button className="next" onClick={goNext} />
       </div>
       <div className="carousel-cont">
-        <ul className="slider-track">
-          <li className="slider-item _1">
-            <div className="text-wrap">
-              <strong>
-                국내/외 19개국 전세계의 아이들에게
-                <br />
-                사랑받는 학습지
-              </strong>
-              <p>
-                학부모가 뽑은 교육브랜드 15년 연속 대상 수상.
-                <br />
-                브랜드 파워(K-BPI) 1위 24년 연속 선정 (2022년 5월 기준)
-              </p>
-            </div>
-            <div className="img-wrap">
-              <img className="img" src="assets/img/main1.png" />
-            </div>
-          </li>
-          <li className="slider-item _2">
-            <div className="text-wrap">
-              <strong>
-                눈높이야~
-                <br />
-                여름방학을 부탁해!
-              </strong>
-              <p>나의 여름방학 계획을 공유하고 선물받자!</p>
-              <span>이벤트 기간 : 07월 29일(금) ~ 08월 28일(일)</span>
-            </div>
-            <div className="img-wrap">
-              <img className="img" src="assets/img/main2.png" />
-            </div>
-          </li>
-          <li className="slider-item _3">
-            <div className="text-wrap">
-              <strong>
-                제 3회 눈높이 iBT 총괄평가
-                <br />
-                자신만만 평가전
-              </strong>
-              <p>
-                전국 초등학생 모두 모여라!
-                <br />
-                초등학교 1학기 전범위 총정리! 나의 실력 확인하고, 선물도 받자!
-              </p>
-              <span>이벤트 기간 : 07월 11일(월) ~ 08월 07일(일)</span>
-            </div>
-            <div className="img-wrap">
-              <img className="img" src="assets/img/main3.png" />
-            </div>
-          </li>
+        <div className="page-wrap">
+          <p className="current-page">0{inx + 1}</p>
+          <p>/</p>
+          <p className="all-page">0{mainSlideItems.length}</p>
+        </div>
+        <ul ref={slideTrack} className="slider-track">
+          {mainSlideItems.map((o, inx) => {
+            const title = o.title;
+            const text = o.text;
+            const subText = o.subText;
+            const img = o.img;
+            return (
+              <li
+                className={`slider-item _${inx + 1}`}
+                key={`slide-list-${inx}`}
+              >
+                <div className="text-wrap">
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                  {subText ? <span>{subText}</span> : <></>}
+                </div>
+                <div className="img-wrap">
+                  <img className="img" src={img} />
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </SliderContWrap>
@@ -111,7 +116,7 @@ const SliderContWrap = styled.section`
   // 슬라이드 컨테이너
   .carousel-cont {
     flex: 0 0 auto;
-    padding: 140px 0 50px;
+    padding: 140px 0 0;
     max-width: 1320px;
     overflow: hidden;
     position: relative;
@@ -123,6 +128,7 @@ const SliderContWrap = styled.section`
       top: 50%;
       right: 0;
       transform: translateY(-50%);
+      z-index: 1;
       p {
         font-size: ${(t) => t.theme.fontSize.medium};
         margin: 0 2px;
@@ -160,6 +166,7 @@ const SliderContWrap = styled.section`
             font-weight: ${(t) => t.theme.fontWeight.bold};
             line-height: 48px;
             margin-bottom: 27px;
+            word-break: keep-all;
           }
           p {
             display: inline-block;
@@ -167,6 +174,7 @@ const SliderContWrap = styled.section`
             font-weight: 24px;
             line-height: 24px;
             margin-bottom: 27px;
+            word-break: keep-all;
           }
         }
         .img-wrap {
@@ -194,16 +202,25 @@ const SliderContWrap = styled.section`
           }
         }
         &._1 {
+          .text-wrap {
+            width: 608px;
+          }
           .img-wrap .img {
             max-width: 500px;
           }
         }
         &._2 {
+          .text-wrap {
+            width: 365px;
+          }
           .img-wrap .img {
             max-width: 800px;
           }
         }
         &._3 {
+          .text-wrap {
+            width: 560px;
+          }
           .img-wrap .img {
             max-width: 600px;
           }

@@ -255,7 +255,7 @@ const GnbDepth = styled.ul`
     a {
       width: 100%;
       padding: 12px 0;
-      color: ${(t) => t.theme.color.fontGray};
+      color: ${(t) => t.theme.color.fontBlack};
     }
     &:hover {
       a {
