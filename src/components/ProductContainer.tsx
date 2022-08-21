@@ -1,6 +1,42 @@
 import styled from "styled-components";
+import React, { useState } from "react";
+import { productSubTabList, product, IPropductItem } from "../mock/product";
 
 export const ProductContainer = () => {
+  const [tab, setTab] = useState("baby");
+  const [subTab, setSubTab] = useState("전체영역");
+  const onChangeTab = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const value = e.currentTarget.getAttribute("data-tab") as string;
+    setTab(value);
+    setSubTab("전체영역");
+  };
+  const onChangeSubTab = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const value = e.currentTarget.getAttribute("data-id") as string;
+    setSubTab(value);
+  };
+
+  const subTabList = [...productSubTabList].filter((o) => o.label === tab);
+  const getProductList = (): IPropductItem[] => {
+    switch (tab) {
+      case "baby":
+        return product.baby as IPropductItem[];
+      case "element":
+        return product.element as IPropductItem[];
+      case "middle":
+        return product.middle as IPropductItem[];
+      case "high":
+        return product.high as IPropductItem[];
+      case "adult":
+        return product.adult as IPropductItem[];
+      default:
+        return product.baby as IPropductItem[];
+    }
+  };
+
+  const filterList = getProductList().filter((o) => o.type === subTab);
+
   return (
     <ProductContWrap>
       <TitleWrap>
@@ -9,117 +45,77 @@ export const ProductContainer = () => {
       </TitleWrap>
       <TabWrap>
         <ul className="top-tab">
-          <li>
-            <a href="#none">
+          <li className={tab === "baby" ? "active" : ""}>
+            <a href="#none" onClick={onChangeTab} data-tab="baby">
               <p>유아</p>
             </a>
           </li>
-          <li>
-            <a href="#none">
+          <li className={tab === "element" ? "active" : ""}>
+            <a href="#none" onClick={onChangeTab} data-tab="element">
               <p>초등</p>
             </a>
           </li>
-          <li>
-            <a href="#none">
+          <li className={tab === "middle" ? "active" : ""}>
+            <a href="#none" onClick={onChangeTab} data-tab="middle">
               <p>중등</p>
             </a>
           </li>
-          <li>
-            <a href="#none">
+          <li className={tab === "high" ? "active" : ""}>
+            <a href="#none" onClick={onChangeTab} data-tab="high">
               <p>고등</p>
             </a>
           </li>
-          <li>
-            <a href="#none">
+          <li className={tab === "adult" ? "active" : ""}>
+            <a href="#none" onClick={onChangeTab} data-tab="adult">
               <p>성인</p>
             </a>
           </li>
         </ul>
         <ul className="bottom-tab">
-          <li>
-            <a href="#none">전체영역</a>
-          </li>
-          <li>
-            <a href="#none">언어영역</a>
-          </li>
-          <li>
-            <a href="#none">수리영역</a>
-          </li>
-          <li>
-            <a href="#none">외국어영역</a>
-          </li>
-          <li>
-            <a href="#none">과학영역</a>
-          </li>
+          {subTabList.map((o) => {
+            return o.value.map((o, inx) => {
+              return (
+                <li
+                  key={`tab-${inx}`}
+                  className={`${o}` === subTab ? "active" : ""}
+                >
+                  <a href="#none" data-id={o} onClick={onChangeSubTab}>
+                    {o}
+                  </a>
+                </li>
+              );
+            });
+          })}
         </ul>
       </TabWrap>
       <ProductTrack>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book1.png" />
-            <p>국어</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book2.png" />
-            <p>수학</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book3.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book4.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book5.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book2.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book1.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book5.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book4.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book3.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
-        <li className="product-item">
-          <a href="#none">
-            <img src="assets/img/book/book1.png" />
-            <p>어쩌구</p>
-          </a>
-        </li>
+        {subTab === "전체영역"
+          ? getProductList().map((o, inx) => {
+              return (
+                <li
+                  className="product-item"
+                  key={`product-getProductList()-${inx}`}
+                >
+                  <a href="#none">
+                    <img src={o.img} />
+                    <p>{o.name}</p>
+                  </a>
+                </li>
+              );
+            })
+          : filterList.map((o, inx) => {
+              return (
+                <li
+                  className="product-item"
+                  key={`product-getProductList()-${inx}`}
+                >
+                  <a href="#none">
+                    <img src={o.img} />
+                    <p>{o.name}</p>
+                  </a>
+                </li>
+              );
+            })}
       </ProductTrack>
     </ProductContWrap>
   );
@@ -158,7 +154,6 @@ const TabWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  margin: 20px 0 10px;
   .top-tab {
     flex: 0 0 80px;
     display: flex;
@@ -171,6 +166,7 @@ const TabWrap = styled.div`
       flex-flow: row nowrap;
       position: relative;
       margin: 0 15px;
+
       > a {
         flex: 1 1 auto;
         width: 100%;
@@ -208,6 +204,7 @@ const TabWrap = styled.div`
           font-size: ${(t) => t.theme.fontSize.medium};
         }
       }
+      &.active a p,
       &:hover a p {
         color: #fd0000;
       }
@@ -215,6 +212,7 @@ const TabWrap = styled.div`
         a::before {
           background-image: url("assets/icon/baby.svg");
         }
+        &.active a,
         &:hover a {
           &::before {
             background-image: url("assets/icon/baby_a.svg");
@@ -225,6 +223,7 @@ const TabWrap = styled.div`
         a::before {
           background-image: url("assets/icon/element.svg");
         }
+        &.active a,
         &:hover a {
           &::before {
             background-image: url("assets/icon/element_a.svg");
@@ -235,6 +234,7 @@ const TabWrap = styled.div`
         a::before {
           background-image: url("assets/icon/middle.svg");
         }
+        &.active a,
         &:hover a {
           &::before {
             background-image: url("assets/icon/middle_a.svg");
@@ -245,6 +245,7 @@ const TabWrap = styled.div`
         a::before {
           background-image: url("assets/icon/high.svg");
         }
+        &.active a,
         &:hover a {
           &::before {
             background-image: url("assets/icon/high_a.svg");
@@ -255,6 +256,7 @@ const TabWrap = styled.div`
         a::before {
           background-image: url("assets/icon/adult.svg");
         }
+        &.active a,
         &:hover a {
           &::before {
             background-image: url("assets/icon/adult_a.svg");
@@ -277,6 +279,11 @@ const TabWrap = styled.div`
       &:hover a {
         color: ${(t) => t.theme.color.red};
       }
+      &.active {
+        a {
+          color: ${(t) => t.theme.color.red};
+        }
+      }
     }
   }
 `;
@@ -291,8 +298,22 @@ const ProductTrack = styled.ul`
   top: 330px;
   left: -360px;
   &::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+    width: 8px;
+    border-radius: 8px;
+    background-color: ${(t) => t.theme.color.gray};
+  }
+  &::-webkit-scrollbar-track {
+    width: 8px;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-radius: 8px;
+    background-color: #ac9ae3;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
   }
   .product-item {
     height: 360px;

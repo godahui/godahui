@@ -1,12 +1,20 @@
 import styled from "styled-components";
+import React, { useState } from "react";
 import { FaHome } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaSchool } from "react-icons/fa";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaLaptopHouse } from "react-icons/fa";
-import info1 from "../assets/img/info/info1.png";
+import { info } from "../mock/info";
 
 export const InfoContainer = () => {
+  const [tab, setTab] = useState("online");
+  const onChangeTab = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const value = e.currentTarget.getAttribute("data-tab") as string;
+    setTab(value);
+  };
+  const filterInfo = info.find((o) => o.key === tab);
   return (
     <InfoContWrap>
       <div className="inner">
@@ -20,40 +28,40 @@ export const InfoContainer = () => {
           </TitleWrap>
           <TabWrap>
             <ul>
-              <li>
-                <a>
+              <li className={tab === "online" ? "active" : ""}>
+                <a href="#none" onClick={onChangeTab} data-tab="online">
                   <span>
                     <FaLaptopHouse />
                   </span>
                   <p>온라인으로</p>
                 </a>
               </li>
-              <li>
-                <a>
+              <li className={tab === "home" ? "active" : ""}>
+                <a href="#none" onClick={onChangeTab} data-tab="home">
                   <span>
                     <FaHome />
                   </span>
                   <p>선생님과 집에서</p>
                 </a>
               </li>
-              <li>
-                <a>
+              <li className={tab === "book" ? "active" : ""}>
+                <a href="#none" onClick={onChangeTab} data-tab="book">
                   <span>
                     <FaBook />
                   </span>
                   <p>교재만 받기</p>
                 </a>
               </li>
-              <li>
-                <a>
+              <li className={tab === "study" ? "active" : ""}>
+                <a href="#none" onClick={onChangeTab} data-tab="study">
                   <span>
                     <FaSchool />
                   </span>
                   <p>공부방에서</p>
                 </a>
               </li>
-              <li>
-                <a>
+              <li className={tab === "learning" ? "active" : ""}>
+                <a href="#none" onClick={onChangeTab} data-tab="learning">
                   <span>
                     <FaChalkboardTeacher />
                   </span>
@@ -65,14 +73,11 @@ export const InfoContainer = () => {
         </LeftArea>
         <RightArea>
           <div className="text-wrap">
-            <span>온라인으로</span>
-            <p>
-              비대면 온라인학습으로 시간과 장소에 구애 없이선생님과 학습할 수
-              있는 온라인학습시스템 태블릿으로 공부하는 AI스마트학습 시스템
-            </p>
+            <span>{filterInfo?.name}</span>
+            <p>{filterInfo?.text}</p>
           </div>
           <div className="img-wrap">
-            <img src={info1} />
+            <img src={filterInfo?.img} alt="공부장소" />
           </div>
         </RightArea>
       </div>
@@ -137,6 +142,14 @@ const TabWrap = styled.div`
         width: 28px;
         height: 28px;
       }
+      &.active a {
+        > span svg {
+          fill: ${(t) => t.theme.color.red};
+        }
+        p {
+          color: ${(t) => t.theme.color.red};
+        }
+      }
       > a {
         flex: 1 1 auto;
         width: 100%;
@@ -156,11 +169,24 @@ const TabWrap = styled.div`
           svg {
             width: 36px;
             height: 36px;
+            fill: ${(t) => t.theme.color.fontGray};
           }
         }
         > p {
           flex: 0 0 auto;
           word-break: keep-all;
+        }
+      }
+      &:hover {
+        > a {
+          > span {
+            svg {
+              fill: ${(t) => t.theme.color.red};
+            }
+          }
+          > p {
+            color: ${(t) => t.theme.color.red};
+          }
         }
       }
     }
@@ -179,13 +205,13 @@ const RightArea = styled.div`
     flex-flow: column nowrap;
     justify-content: space-between;
     position: absolute;
-    top: 50%;
+    bottom: 0;
     right: 350px;
     transform: translateY(-50%);
     background-color: #fff;
     box-shadow: 0px 2px 20px ${(t) => t.theme.color.shadow};
-    padding: 25px 20px;
-    width: 370px;
+    padding: 25px 30px;
+    width: 330px;
     border-radius: 32px;
     span {
       flex: 0 0 30px;

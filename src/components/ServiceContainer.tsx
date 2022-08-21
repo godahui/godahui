@@ -1,12 +1,36 @@
 import styled from "styled-components";
 import banner from "../assets/img/banner.png";
+import { service } from "../mock/service";
+import { useState, useRef, useEffect } from "react";
 
 export const ServiceContainer = () => {
+  const [inx, setInx] = useState(0);
+  const slideTrack = useRef() as React.MutableRefObject<HTMLUListElement>;
+  const goNext = () => {
+    if (inx === 1) {
+      return;
+    }
+    setInx(inx + 1);
+  };
+  const goPrev = () => {
+    if (inx === 0) {
+      return;
+    }
+    setInx(inx - 1);
+  };
+
+  useEffect(() => {
+    const slideTrackCount = slideTrack.current.children.length;
+    slideTrack.current.style.transition = "all 0.5s ease 0s";
+    slideTrack.current.style.width = slideTrackCount * 400 + "px";
+    slideTrack.current.style.marginLeft = "-" + inx * 1200 + "px";
+  }, [inx]);
+
   return (
     <ServiceContWrap style={{ backgroundImage: 'url("assets/img/bg2.png")' }}>
       <BtnWrap>
-        <button className="prev"></button>
-        <button className="next"></button>
+        <button className="prev" onClick={goPrev} disabled={inx === 0} />
+        <button className="next" onClick={goNext} disabled={inx === 1} />
       </BtnWrap>
       <TitleWrap>
         <h2>Service</h2>
@@ -19,77 +43,19 @@ export const ServiceContainer = () => {
         </strong>
       </TitleWrap>
       <SlideCont>
-        <div className="btn-wrap">
-          <button className="prev"></button>
-          <button className="next"></button>
-        </div>
-        <ul className="slider-track">
-          <li className="slider-item _1">
-            <button>자세히보기</button>
-            <a className="img-wrap">
-              <p className="explain">
-                자녀의 학습 결과와 정보를 마카다미아 앱을 통해 언제 어디서나
-                확인 가능합니다.
-              </p>
-              <img src="assets/img/service/service1.png" />
-            </a>
-            <p className="text">눈높이iBT 학력진단</p>
-          </li>
-          <li className="slider-item _2">
-            <button>자세히보기</button>
-            <a className="img-wrap">
-              <p className="explain">
-                자녀의 학습 결과와 정보를 마카다미아 앱을 통해 언제 어디서나
-                확인 가능합니다.
-              </p>
-              <img src="assets/img/service/service2.png" />
-            </a>
-            <p className="text">눈높이학습관</p>
-          </li>
-          <li className="slider-item _3">
-            <button>자세히보기</button>
-            <a className="img-wrap">
-              <p className="explain">
-                자녀의 학습 결과와 정보를 마카다미아 앱을 통해 언제 어디서나
-                확인 가능합니다.
-              </p>
-              <img src="assets/img/service/service3.png" />
-            </a>
-            <p className="text">마카다미아</p>
-          </li>
-          <li className="slider-item _4">
-            <button>자세히보기</button>
-            <a className="img-wrap">
-              <p className="explain">
-                자녀의 학습 결과와 정보를 마카다미아 앱을 통해 언제 어디서나
-                확인 가능합니다.
-              </p>
-              <img src="assets/img/service/service1.png" />
-            </a>
-            <p className="text">눈높이iBT 학력진단</p>
-          </li>
-          <li className="slider-item _5">
-            <button>자세히보기</button>
-            <a className="img-wrap">
-              <p className="explain">
-                자녀의 학습 결과와 정보를 마카다미아 앱을 통해 언제 어디서나
-                확인 가능합니다.
-              </p>
-              <img src="assets/img/service/service2.png" />
-            </a>
-            <p className="text">눈높이학습관</p>
-          </li>
-          <li className="slider-item _6">
-            <button>자세히보기</button>
-            <a className="img-wrap">
-              <p className="explain">
-                자녀의 학습 결과와 정보를 마카다미아 앱을 통해 언제 어디서나
-                확인 가능합니다.
-              </p>
-              <img src="assets/img/service/service3.png" />
-            </a>
-            <p className="text">마카다미아</p>
-          </li>
+        <ul className="slider-track" ref={slideTrack}>
+          {service.map((o, inx) => {
+            return (
+              <li key={`service-list-${inx}`} className="slider-item">
+                <a className="img-wrap">
+                  <p className="explain">{o.text}</p>
+                  <button>자세히보기</button>
+                  <img src={o.img} />
+                  <p className="text">{o.name}</p>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </SlideCont>
       <BannerWrap>
@@ -139,9 +105,13 @@ const BtnWrap = styled.div`
       transform: rotate(45deg);
       z-index: 1;
     }
-    &:hover::after {
+    &:hover::after:not(:disabled) {
       border-left: 1px solid ${(t) => t.theme.color.blackGray};
       border-bottom: 1px solid ${(t) => t.theme.color.blackGray};
+    }
+    &:disabled::after {
+      border-left: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
     }
   }
   .next {
@@ -172,104 +142,106 @@ const SlideCont = styled.div`
   display: flex;
   flex-flow: column nowrap;
   width: 1200px;
+  height: 400px;
   overflow: hidden;
   margin: 50px 0;
   .slider-track {
     display: flex;
     flex-flow: row nowrap;
-    height: 380px;
-    overflow: hidden;
-    padding: 20px 0;
+    height: 100%;
+    padding: 20px 0 20px;
+    z-index: 2;
     .slider-item {
-      flex: 0 0 auto;
+      flex: 0 0 400px;
+      height: 100%;
       display: flex;
       flex-flow: column nowrap;
-      width: 390px;
-      height: 100%;
-      margin: 0 9px;
-      align-items: center;
       justify-content: center;
-      cursor: pointer;
+      align-items: center;
       position: relative;
-      button {
-        display: none;
-      }
-      .img-wrap {
-        flex: 0 0 auto;
-        width: 350px;
-        height: 350px;
-        border-radius: 40px;
-        overflow: hidden;
+      padding-bottom: 20px;
+      > a {
+        display: inline-block;
+        width: 340px;
+        height: 340px;
         &::before {
           content: "";
           display: block;
-          backdrop-filter: blur(6px);
-          background-color: rgba(130, 96, 231, 0.5);
-          width: 343px;
-          height: 345px;
-          border-radius: 40px;
-          position: absolute;
-          top: -2px;
-          left: 4px;
-          z-index: 1;
-          transition: opacity 0.2s;
-          visibility: hidden;
           opacity: 0;
+          width: 333px;
+          height: 335px;
+          border-radius: 39px;
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 3;
+          background-color: rgba(130, 96, 231, 0.5);
+          backdrop-filter: blur(4px);
         }
-        img {
-          width: 100%;
-          height: 100%;
-        }
-        .explain {
+        .explain,
+        button {
           display: none;
         }
-      }
-      .text {
-        flex: 0 0 30px;
+        img {
+          width: 340px;
+          height: 340px;
+          border-radius: 40px;
+        }
+        .text {
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%);
+          z-index: 3;
+        }
       }
       &:hover {
-        transition: transform 0.5s;
-        transform: translateY(-15px);
-        button {
-          display: block;
-          font-size: ${(t) => t.theme.fontSize.small};
-          font-weight: ${(t) => t.theme.fontWeight.bold};
-          border-radius: 32px;
-          background-color: #fff;
-          position: absolute;
-          bottom: 20%;
-          left: 50%;
-          transform: translate(-50%, 0);
-          width: 250px;
-          height: 44px;
-          z-index: 2;
-          &:hover {
-            background-color: #f3f3f3;
-          }
-          &:active {
-            background-color: #e8e0eb;
-          }
-        }
-        .img-wrap {
-          position: relative;
+        transform: translateY(-10px);
+        transition: all 0.4s;
+        > a {
           &::before {
             opacity: 1;
-            visibility: visible;
+            transition: all 0.2s;
           }
           .explain {
-            padding: 30px;
-            font-size: ${(t) => t.theme.fontSize.regular};
-            line-height: 20px;
-            display: inline-block;
+            display: block;
             position: absolute;
-            z-index: 2;
-            top: 15%;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 280px;
+            height: 200px;
+            word-break: keep-all;
+            line-height: 20px;
             color: #fff;
+            font-size: ${(t) => t.theme.fontSize.regular};
+          }
+          button {
+            display: block;
+            position: absolute;
+            bottom: 19%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            font-size: ${(t) => t.theme.fontSize.small};
+            font-weight: ${(t) => t.theme.fontWeight.bold};
+            background-color: #fff;
+            width: 240px;
+            height: 40px;
+            border-radius: 40px;
+            &:hover {
+              background-color: #f6f2f8;
+            }
+            &:active {
+              background-color: #e1d7e6;
+            }
           }
         }
-        &:active {
-          transform: scale(0.99) translateY(-15px);
-        }
+      }
+      &:active {
+        transform: translateY(-10px) scale(0.98);
       }
     }
   }

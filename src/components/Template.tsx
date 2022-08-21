@@ -91,4 +91,5 @@ const ContainerWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  scroll-snap-type: y;
 `;

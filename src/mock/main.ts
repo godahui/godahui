@@ -13,7 +13,7 @@ const mainSlideItems: ISlideItem[] = [
     text: `학부모가 뽑은 교육브랜드 15년 연속 대상 수상.
         \n
         브랜드 파워(K-BPI) 1위 24년 연속 선정 (2022년 5월 기준)`,
-    img: `assets/img/main1.png`,
+    img: `../assets/img/main1.png`,
   },
   {
     title: `
@@ -21,7 +21,7 @@ const mainSlideItems: ISlideItem[] = [
     여름방학을 부탁해!`,
     text: `나의 여름방학 계획을 공유하고 선물받자!`,
     subText: `이벤트 기간 : 07월 29일(금) ~ 08월 28일(일)`,
-    img: `assets/img/main2.png`,
+    img: `../assets/img/main2.png`,
   },
   {
     title: `
@@ -32,7 +32,7 @@ const mainSlideItems: ISlideItem[] = [
     초등학교 1학기 전범위 총정리! 나의 실력 확인하고, 선물도 받자!
     `,
     subText: `이벤트 기간 : 07월 11일(월) ~ 08월 07일(일)`,
-    img: `assets/img/main3.png`,
+    img: `../assets/img/main3.png`,
   },
 ];
 
