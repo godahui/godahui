@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import { FaHome } from "react-icons/fa";
+import { FaBook } from "react-icons/fa";
+import { FaSchool } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { FaLaptopHouse } from "react-icons/fa";
+import info1 from "../assets/img/info/info1.png";
 
 export const InfoContainer = () => {
   return (
@@ -16,31 +22,41 @@ export const InfoContainer = () => {
             <ul>
               <li>
                 <a>
-                  <span></span>
+                  <span>
+                    <FaLaptopHouse />
+                  </span>
                   <p>온라인으로</p>
                 </a>
               </li>
               <li>
                 <a>
-                  <span></span>
+                  <span>
+                    <FaHome />
+                  </span>
                   <p>선생님과 집에서</p>
                 </a>
               </li>
               <li>
                 <a>
-                  <span></span>
+                  <span>
+                    <FaBook />
+                  </span>
                   <p>교재만 받기</p>
                 </a>
               </li>
               <li>
                 <a>
-                  <span></span>
+                  <span>
+                    <FaSchool />
+                  </span>
                   <p>공부방에서</p>
                 </a>
               </li>
               <li>
                 <a>
-                  <span></span>
+                  <span>
+                    <FaChalkboardTeacher />
+                  </span>
                   <p>러닝센터에서</p>
                 </a>
               </li>
@@ -55,7 +71,9 @@ export const InfoContainer = () => {
               있는 온라인학습시스템 태블릿으로 공부하는 AI스마트학습 시스템
             </p>
           </div>
-          <div className="img-wrap"></div>
+          <div className="img-wrap">
+            <img src={info1} />
+          </div>
         </RightArea>
       </div>
     </InfoContWrap>
@@ -115,6 +133,10 @@ const TabWrap = styled.div`
       &:not(:nth-child(n + 4)) {
         margin-bottom: 20px;
       }
+      &:nth-child(3) a span svg {
+        width: 28px;
+        height: 28px;
+      }
       > a {
         flex: 1 1 auto;
         width: 100%;
@@ -122,12 +144,19 @@ const TabWrap = styled.div`
         flex-flow: column nowrap;
         align-items: center;
         > span {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: center;
           flex: 1 1 auto;
           width: 70px;
-          /* background-color: ${(t) => t.theme.color.gray}; */
-          background-color: #ccc;
+          background-color: #fff;
           border-radius: 50%;
           margin-bottom: 9px;
+          svg {
+            width: 36px;
+            height: 36px;
+          }
         }
         > p {
           flex: 0 0 auto;
@@ -156,7 +185,7 @@ const RightArea = styled.div`
     background-color: #fff;
     box-shadow: 0px 2px 20px ${(t) => t.theme.color.shadow};
     padding: 25px 20px;
-    width: 350px;
+    width: 370px;
     border-radius: 32px;
     span {
       flex: 0 0 30px;
