@@ -210,56 +210,56 @@ const TabWrap = styled.div`
       }
       &:nth-child(1) {
         a::before {
-          background-image: url("assets/icon/baby.svg");
+          background-image: url("../assets/icon/baby.svg");
         }
         &.active a,
         &:hover a {
           &::before {
-            background-image: url("assets/icon/baby_a.svg");
+            background-image: url("../assets/icon/baby_a.svg");
           }
         }
       }
       &:nth-child(2) {
         a::before {
-          background-image: url("assets/icon/element.svg");
+          background-image: url("../assets/icon/element.svg");
         }
         &.active a,
         &:hover a {
           &::before {
-            background-image: url("assets/icon/element_a.svg");
+            background-image: url("../assets/icon/element_a.svg");
           }
         }
       }
       &:nth-child(3) {
         a::before {
-          background-image: url("assets/icon/middle.svg");
+          background-image: url("../assets/icon/middle.svg");
         }
         &.active a,
         &:hover a {
           &::before {
-            background-image: url("assets/icon/middle_a.svg");
+            background-image: url("../assets/icon/middle_a.svg");
           }
         }
       }
       &:nth-child(4) {
         a::before {
-          background-image: url("assets/icon/high.svg");
+          background-image: url("../assets/icon/high.svg");
         }
         &.active a,
         &:hover a {
           &::before {
-            background-image: url("assets/icon/high_a.svg");
+            background-image: url("../assets/icon/high_a.svg");
           }
         }
       }
       &:nth-child(5) {
         a::before {
-          background-image: url("assets/icon/adult.svg");
+          background-image: url("../assets/icon/adult.svg");
         }
         &.active a,
         &:hover a {
           &::before {
-            background-image: url("assets/icon/adult_a.svg");
+            background-image: url("../assets/icon/adult_a.svg");
           }
         }
       }
