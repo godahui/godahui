@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
+import { TopBtn } from "./TopBtn";
 
 interface IProps {
   header?: React.ReactElement;
@@ -27,6 +28,7 @@ export const Template = ({ header, container, footer }: IProps) => {
       <HeaderWrap className={scrollHeader}>{header}</HeaderWrap>
       <ContainerWrap>{container}</ContainerWrap>
       {footer}
+      <TopBtn />
     </RootWrap>
   );
 };
