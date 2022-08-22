@@ -7,12 +7,10 @@ import { ProductContainer } from "./components/ProductContainer";
 import { ServiceContainer } from "./components/ServiceContainer";
 import { InfoContainer } from "./components/InfoContainer";
 import { Footer } from "./components/Footer";
-import { TopBtn } from "./components/TopBtn";
 
-function App() {
+export const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <TopBtn />
       <Template
         header={<Header />}
         container={
@@ -27,6 +25,4 @@ function App() {
       />
     </ThemeProvider>
   );
-}
-
-export default App;
+};
