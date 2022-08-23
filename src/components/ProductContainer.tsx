@@ -2,7 +2,11 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { productSubTabList, product, IPropductItem } from "../mock/product";
 
-export const ProductContainer = () => {
+interface IProps {
+  scrollProduct: "animation-cont" | "cont";
+}
+
+export const ProductContainer = ({ scrollProduct }: IProps) => {
   const [tab, setTab] = useState("baby");
   const [subTab, setSubTab] = useState("전체영역");
   const onChangeTab = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -38,7 +42,7 @@ export const ProductContainer = () => {
   const filterList = getProductList().filter((o) => o.type === subTab);
 
   return (
-    <ProductContWrap>
+    <ProductContWrap className={scrollProduct}>
       <TitleWrap>
         <h2>Product</h2>
         <strong>지금 우리아이에게 필요한 눈높이는?</strong>
@@ -131,6 +135,21 @@ const ProductContWrap = styled.section`
   justify-content: flex-start;
   position: relative;
   margin-bottom: 100px;
+  opacity: 0;
+  @keyframes contSlide1 {
+    from {
+      transform: translateX(-80px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  &.animation-cont {
+    animation: contSlide1 0.5s;
+    opacity: 1;
+  }
 `;
 
 const TitleWrap = styled.div`

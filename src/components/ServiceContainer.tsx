@@ -3,7 +3,11 @@ import banner from "../assets/img/banner.png";
 import { service } from "../mock/service";
 import { useState, useRef, useEffect } from "react";
 
-export const ServiceContainer = () => {
+interface IProps {
+  scrollService: "animation-cont" | "cont";
+}
+
+export const ServiceContainer = ({ scrollService }: IProps) => {
   const [inx, setInx] = useState(0);
   const slideTrack = useRef() as React.MutableRefObject<HTMLUListElement>;
   const goNext = () => {
@@ -27,7 +31,10 @@ export const ServiceContainer = () => {
   }, [inx]);
 
   return (
-    <ServiceContWrap style={{ backgroundImage: 'url("assets/img/bg2.png")' }}>
+    <ServiceContWrap
+      style={{ backgroundImage: 'url("assets/img/bg2.png")' }}
+      className={scrollService}
+    >
       <BtnWrap>
         <button className="prev" onClick={goPrev} disabled={inx === 0} />
         <button className="next" onClick={goNext} disabled={inx === 1} />
@@ -78,6 +85,20 @@ const ServiceContWrap = styled.section`
   background-size: auto;
   background-position: top;
   background-repeat: no-repeat;
+  @keyframes contSlide2 {
+    from {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  &.animation-cont {
+    animation: contSlide2 0.5s;
+    opacity: 1;
+  }
 `;
 
 const BtnWrap = styled.div`

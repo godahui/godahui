@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
 
-export const Header = () => {
+interface IProps {
+  scrollHeader: "scroll-header" | "header";
+}
+
+export const Header = ({ scrollHeader }: IProps) => {
   return (
-    <>
+    <RootWrap className={scrollHeader}>
       <NavWrap>
         <TopNav className="top-nav">
           <h1 className="logo">
@@ -112,9 +117,49 @@ export const Header = () => {
           </Gnb>
         </BottomNav>
       </NavWrap>
-    </>
+    </RootWrap>
   );
 };
+const RootWrap = styled.header`
+  flex: 0 0 140px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  min-width: 1280px;
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  &.scroll-header {
+    backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.9);
+    animation: slideIn 0.3s;
+    transform: translateY(-80px);
+  }
+  &.header {
+    background-color: transparent;
+    animation: slideOut 0.3s;
+    transform: translateY(0px);
+  }
+  @keyframes slideIn {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-80px);
+    }
+  }
+  @keyframes slideOut {
+    from {
+      transform: translateY(-80px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+`;
 
 const NavWrap = styled.nav`
   flex: 1 1 auto;

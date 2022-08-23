@@ -30,7 +30,10 @@ export const SliderContainer = () => {
   }, [inx]);
 
   return (
-    <SliderContWrap style={{ backgroundImage: 'url("assets/img/bg1.png")' }}>
+    <SliderContWrap
+      style={{ backgroundImage: 'url("assets/img/bg1.png")' }}
+      className="slide-in"
+    >
       <div className="btn-wrap">
         <button className="prev" onClick={goPrev} />
         <button className="next" onClick={goNext} />
@@ -79,6 +82,17 @@ const SliderContWrap = styled.section`
   background-position: top;
   background-repeat: no-repeat;
   position: relative;
+  animation: slidein 0.6s ease;
+  @keyframes slidein {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
   .btn-wrap {
     width: 100%;
     max-width: 1420px;
@@ -189,7 +203,7 @@ const SliderContWrap = styled.section`
               top: 22px;
             }
             50% {
-              top: 40px;
+              top: 30px;
             }
             100% {
               top: 20px;

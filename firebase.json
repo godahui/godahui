@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "site": "noonnoppi-pjt",
+    "public": "dist",
+    "ignore": [],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

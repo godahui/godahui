@@ -7,7 +7,11 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaLaptopHouse } from "react-icons/fa";
 import { info } from "../mock/info";
 
-export const InfoContainer = () => {
+interface IProps {
+  scrollInfo: "animation-cont" | "cont";
+}
+
+export const InfoContainer = ({ scrollInfo }: IProps) => {
   const [tab, setTab] = useState("online");
   const onChangeTab = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -18,7 +22,7 @@ export const InfoContainer = () => {
   return (
     <InfoContWrap>
       <div className="inner">
-        <LeftArea>
+        <LeftArea className={scrollInfo}>
           <TitleWrap>
             <h2>
               눈높이,
@@ -71,7 +75,7 @@ export const InfoContainer = () => {
             </ul>
           </TabWrap>
         </LeftArea>
-        <RightArea>
+        <RightArea className={scrollInfo}>
           <div className="text-wrap">
             <span>{filterInfo?.name}</span>
             <p>{filterInfo?.text}</p>
@@ -107,6 +111,20 @@ const LeftArea = styled.div`
   flex: 0 0 447px;
   display: flex;
   flex-flow: column nowrap;
+  @keyframes contSlide3 {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  &.animation-cont {
+    animation: contSlide3 0.5s;
+    opacity: 1;
+  }
 `;
 const TitleWrap = styled.div`
   flex: 0 0 auto;
@@ -231,5 +249,19 @@ const RightArea = styled.div`
     background-color: #ccc;
     overflow: hidden;
     border-radius: 40px;
+  }
+  @keyframes contSlide4 {
+    from {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  &.animation-cont {
+    animation: contSlide4 0.5s;
+    opacity: 1;
   }
 `;
