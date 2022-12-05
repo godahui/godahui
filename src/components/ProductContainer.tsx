@@ -101,7 +101,7 @@ export const ProductContainer = ({ scrollProduct }: IProps) => {
                   key={`product-getProductList()-${inx}`}
                 >
                   <a href="#none">
-                    <img src={o.img} />
+                    <img src={o.img} alt={o.name} />
                     <p>{o.name}</p>
                   </a>
                 </li>
@@ -114,7 +114,7 @@ export const ProductContainer = ({ scrollProduct }: IProps) => {
                   key={`product-getProductList()-${inx}`}
                 >
                   <a href="#none">
-                    <img src={o.img} />
+                    <img src={o.img} alt={o.name} />
                     <p>{o.name}</p>
                   </a>
                 </li>

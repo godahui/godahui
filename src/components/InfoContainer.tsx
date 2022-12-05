@@ -81,7 +81,7 @@ export const InfoContainer = ({ scrollInfo }: IProps) => {
             <p>{filterInfo?.text}</p>
           </div>
           <div className="img-wrap">
-            <img src={filterInfo?.img} alt="공부장소" />
+            <img src={filterInfo?.img} alt="" />
           </div>
         </RightArea>
       </div>

@@ -57,7 +57,7 @@ export const ServiceContainer = ({ scrollService }: IProps) => {
                 <a className="img-wrap">
                   <p className="explain">{o.text}</p>
                   <button>자세히보기</button>
-                  <img src={o.img} />
+                  <img src={o.img} alt={o.name} />
                   <p className="text">{o.name}</p>
                 </a>
               </li>
@@ -67,7 +67,10 @@ export const ServiceContainer = ({ scrollService }: IProps) => {
       </SlideCont>
       <BannerWrap>
         <a>
-          <img src={banner} />
+          <img
+            src={banner}
+            alt="눈높이 365 온라인 신청, 눈높이 선생님의 따뜻한 온라인 학습시스템"
+          />
         </a>
       </BannerWrap>
     </ServiceContWrap>

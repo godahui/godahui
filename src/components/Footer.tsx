@@ -9,7 +9,7 @@ export const Footer = () => {
     <FooterWrap>
       <div className="inner">
         <LogoWrap>
-          <img src={logo} />
+          <img src={logo} alt="" />
         </LogoWrap>
         <BottomNavWrap>
           <div className="link-wrap">
@@ -67,13 +67,13 @@ export const Footer = () => {
         </BottomNavWrap>
         <SnsWrap>
           <a href="#none">
-            <img src={instagram} />
+            <img src={instagram} alt="인스타그램 바로가기" />
           </a>
           <a href="#none">
-            <img src={blog} />
+            <img src={blog} alt="블로그 바로가기" />
           </a>
           <a href="#none">
-            <img src={youtube} />
+            <img src={youtube} alt="유튜브 바로가기" />
           </a>
         </SnsWrap>
       </div>

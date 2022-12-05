@@ -12,7 +12,7 @@ export const Header = ({ scrollHeader }: IProps) => {
         <TopNav className="top-nav">
           <h1 className="logo">
             <a href="/">
-              <img src="assets/img/logo.png" />
+              <img src="assets/img/logo.png" alt="대교 눈높이 로고" />
             </a>
           </h1>
           <div className="right-area">

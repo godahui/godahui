@@ -61,7 +61,7 @@ export const SliderContainer = () => {
                   {subText ? <span>{subText}</span> : <></>}
                 </div>
                 <div className="img-wrap">
-                  <img className="img" src={img} />
+                  <img className="img" src={img} alt="" />
                 </div>
               </li>
             );
